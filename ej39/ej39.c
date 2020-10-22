@@ -88,9 +88,22 @@ do{
 				printf("\nMemoria insuficiente");
 			}
 			fp= fopen("potencia.dat","wb");
+			if(fp==NULL){
+			printf("\nNo se pudo crear potencia.dat");
+		}else {
+		if(p){
+		while(p){
 			fwrite(&aux->datos,sizeof(struct data),1,fp);
 			fclose(fp);
-			
+			p=p->l;
+			aux=p;
+			free(aux);
+	}
+    }else {
+			printf("\nNo hay datos para cargar");
+			fclose(fp);
+}
+}
 			
 			case 2:		
 			aux=p;
