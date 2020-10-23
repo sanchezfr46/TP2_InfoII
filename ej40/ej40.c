@@ -39,7 +39,7 @@ void f40 (int iid){
     for (j=i-1; j>=0; j--){
         printf("%s", cadena[j]);
         cadena==aux->datos.desc;
-        aux->datos.estado^aux->datos.estado(1<<3);
+        aux->datos.estado=aux->datos.estado^(1<<3);
 		if(p){
 		while(p){
 			fwrite(&aux->datos,sizeof(struct data),1,fp);
@@ -53,8 +53,8 @@ void f40 (int iid){
 			fclose(fp);
 }
 }    
-        if(aux->datos.estado|aux->datos.estado(1<<0)){
-        	if(datos.estado|datos.estado(1<<2)){
+        if(aux->datos.estado=aux->datos.estado|(1<<0)){
+        	if(aux->datos.estado=aux->datos.estado|(1<<2)){
         		do{
 	aux = (struct pila *) malloc(sizeof(struct pila));
  	if(aux) {
