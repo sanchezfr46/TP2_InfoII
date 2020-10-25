@@ -1,78 +1,66 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <math.h>
-int menu(void);
+#include<math.h>
 struct cola {
-	struct cola *l;
+	char muestra;
+	struct cola *sig,*ant;
 };
 int main(){
 	struct cola *p=NULL, *u=NULL, *aux;
-	int i,b;
-	char s=sin(b)*127;
-	for(i=0;i<90;i=i+5){
+	int  i;
+	char s;
+	for(i=0;i<=90;i=i+5){
+		s=i*0,0174;//pi sobre 180
 		aux=(struct cola*)malloc(sizeof(struct cola));
 				if(aux){
-					b=i*0,0174;//3,14/180
-					printf("\ndato: %d",s);
+					aux->muestra=sin(s);
+					printf("\ndato: %lf",aux->muestra);
+					
 					if(p==NULL){
 						p=u=aux;
+						p->ant=NULL;
 					}else {
-						u->l=aux;
+						u->sig=aux;
+						aux->ant=u;
 						u=aux;
 					}
-					u->l=NULL;
-					
+					u->sig=NULL;
 				}else{
 					printf("Memoria insuficiente");
 				}
 	}
-	for(i=90;i>0;i=i-5){
-		if(p){
-						printf("\ndato: %d",s);
-						aux=p;
-						p=p->l;
-						free(aux);
-						getch();
-						
-					}else{
-						printf("\nNo hay datos para mostrar");
-						
-					}
-					
-	}
-	s=s|0b10000000;
-		for(i=0;i<90;i=i+5){
-		aux=(struct cola*)malloc(sizeof(struct cola));
-				if(aux){
-					printf("\ndato: %i",s);
-					if(p==NULL){
-						p=u=aux;
-					}else {
-						u->l=aux;
-						u=aux;
-					}
-					u->l=NULL;
-					
-				}else{
-					printf("Memoria insuficiente");
+	printf("\n=========Ciclo + ==========");
+printf("\n-------izq a der------");
+		aux=p;
+				while(aux){
+					printf("\n%lf",aux->muestra);
+					aux=aux->sig;
 				}
-
-}
-
-	for(i=90;i>0;i=i-5){
-		if(p){
-						printf("\ndato: %d",s);
-						aux=p;
-						p=p->l;
-						free(aux);
-						getch();
-						
-					}else{
-						printf("\nNo hay datos para mostrar");
-						
-					}
-					
-	}
 	
+	printf("\n-------der a izq------");
+
+			aux=u;
+				while(aux){
+					printf("\n%lf",aux->muestra);
+					aux=aux->ant;
+					}
+	printf("\n=========Ciclo - ==========");
+	aux->muestra=aux->muestra|0b10000000;
+	printf("\n-------izq a der------");
+		aux=p;
+				while(aux){
+					printf("\n%lf",aux->muestra);
+					aux=aux->sig;
+				}
+	
+	printf("\n-------der a izq------");
+
+			aux=u;
+				while(aux){
+					printf("\n%lf",aux->muestra);
+					aux=aux->ant;
+					}
+
+
 	return 0;
 }
